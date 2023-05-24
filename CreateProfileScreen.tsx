@@ -1,4 +1,5 @@
 // CreateProfileScreen.tsx
+import { auth, firestore } from './firebaseConfig'; // replace './firebaseConfig' with the actual path to your firebase configuration file
 import ProfileForm from './ProfileForm';
 import React, { useState } from 'react';
 import {
@@ -35,18 +36,18 @@ const CreateProfileScreen = () => {
 
 async function createUser(newUser) {
   try {
-    const response = await fetch('http://10.206.205.83:3000/users', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newUser),
-    });
+    const user = auth.currentUser;
 
-    if (!response.ok) {
-      throw new Error(`HTTP error ${response.status}`);
+    if (user) {
+      const newUserObject = {
+        ...newUser,
+        userId: user.uid,
+      };
+
+      await firestore.collection('users').doc(user.uid).set(newUserObject);
+
+      console.log('User created:', newUserObject);
     }
-
-    const data = await response.json();
-    console.log('User created:', data);
   } catch (error) {
     console.error('Error creating user:', error);
   }
@@ -69,3 +70,7 @@ const styles = StyleSheet.create({
 });
 
 export default CreateProfileScreen;
+
+
+
+
