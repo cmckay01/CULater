@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
     height: 40,
     borderColor: 'gray',
     borderWidth: 1,
-    marginBottom: 10,
+    marginBottom: 20,
   },
   swipeCardsContainer: {
     marginBottom: 20,
