@@ -14,7 +14,7 @@ web-build/
 .DS_Store
 
 #sensitive files: 
-culater-abc20-firebase-adminsdk-8uxvc-b7b094ff25.json
+culater-admin.json
 firebaseConfig.ts
 
 
