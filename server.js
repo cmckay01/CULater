@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const admin = require('firebase-admin');
-const serviceAccount = require('./culater-abc20-firebase-adminsdk-8uxvc-b7b094ff25.json');
+const serviceAccount = require('./tsconfig.json');
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
